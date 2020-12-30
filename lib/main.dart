@@ -1,4 +1,5 @@
 import 'package:eitango_app/screen/choose_screen.dart';
+import 'package:eitango_app/screen/eitango_test_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,12 +18,13 @@ class MyApp extends StatelessWidget {
                 color: Colors.white
             )
         ),
-        primarySwatch: Colors.amber,
+        primaryColor: Colors.amber,
         accentColor: Colors.lightGreenAccent,
       ),
       home: ChooseScreen(),
       routes: {
-        ChooseScreen.routeName: (ctx) => ChooseScreen()
+        ChooseScreen.routeName: (ctx) => ChooseScreen(),
+        EitangoTestScreen.routeName: (ctx) => EitangoTestScreen()
       },
     );
   }
