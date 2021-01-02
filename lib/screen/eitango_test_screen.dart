@@ -12,6 +12,9 @@ class EitangoTestScreen extends StatefulWidget {
 class _EitangoTestScreenState extends State<EitangoTestScreen> {
   @override
   Widget build(BuildContext context) {
+    // get random list
+    List<int> list = questionBrain.createRandomAnswer(questionBrain.getWordIndex());
+    print(list);
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
@@ -61,6 +64,27 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
 
                 },
               )
+            ),
+          ),
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))
+                  ),
+                  color: Colors.amber,
+                  child: Text(
+                    questionBrain.getWordToJapanese(),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 40
+                    ),
+                  ),
+                  onPressed: () {
+
+                  },
+                )
             ),
           ),
         ],

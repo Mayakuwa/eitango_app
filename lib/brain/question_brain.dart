@@ -2,7 +2,7 @@ import '../model/question.dart';
 import 'dart:math' as math;
 
 class QuestionBrain {
-  int _questionCount = 0;
+  int _questionCount = 1;
   List<int> randomAnswer = [];
 
   List<Question> _questionStorage = [
@@ -33,6 +33,10 @@ class QuestionBrain {
     return _questionStorage[_questionCount].japaneseWord;
   }
 
+  int getWordIndex() {
+    return _questionCount;
+  }
+
   bool isfinishedQuestion() {
     if(_questionCount == 10) {
       //finish question
@@ -49,15 +53,27 @@ class QuestionBrain {
   }
 
   //create random answer
-  List<int> createRandomAnswer() {
+  List<int> createRandomAnswer(int getIndex) {
     //  create list to 0~9
     int i;
     for(i = 0; i <= 9; i++) {
+      // if i == index we would not add that number to list
+      if(i == getIndex) {
+        continue;
+      }
       randomAnswer.add(i);
+      print(i);
     }
+
     //shuffle list
     randomAnswer.shuffle();
-    List<int> newList = randomAnswer.sublist(0,4);
+    List<int> newList = randomAnswer.sublist(0,3);
+
+    //add correct answer
+    newList.add(getIndex);
+
+    //shuffle again
+    newList.shuffle();
     return newList;
   }
 }
