@@ -1,7 +1,9 @@
 import '../model/question.dart';
+import 'dart:math' as math;
 
 class QuestionBrain {
   int _questionCount = 0;
+  List<int> randomAnswer = [];
 
   List<Question> _questionStorage = [
     Question('Apple', 'リンゴ'),
@@ -44,5 +46,18 @@ class QuestionBrain {
   // reset question
   void resetQuestion() {
     _questionCount = 0;
+  }
+
+  //create random answer
+  List<int> createRandomAnswer() {
+    //  create list to 0~9
+    int i;
+    for(i = 0; i <= 9; i++) {
+      randomAnswer.add(i);
+    }
+    //shuffle list
+    randomAnswer.shuffle();
+    List<int> newList = randomAnswer.sublist(0,4);
+    return newList;
   }
 }
