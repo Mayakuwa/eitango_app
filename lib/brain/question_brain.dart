@@ -31,13 +31,18 @@ class QuestionBrain {
     return _questionStorage[_questionCount].japaneseWord;
   }
 
-  bool finishQuestion() {
-    if(_questionCount == 11) {
+  bool isfinishedQuestion() {
+    if(_questionCount == 10) {
       //finish question
       print('Finish Question');
       return true;
     } else {
       return false;
     }
+  }
+
+  // reset question
+  void resetQuestion() {
+    _questionCount = 0;
   }
 }
