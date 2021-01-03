@@ -14,7 +14,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
   Widget build(BuildContext context) {
     // get random list
     List<int> list = questionBrain.createRandomAnswer(questionBrain.getWordIndex());
-    print(list);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
@@ -54,7 +54,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                 ),
                 color: Colors.amber,
                 child: Text(
-                  questionBrain.getWordToJapanese(),
+                  questionBrain.getWordJapanese(list[0]),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 40
@@ -75,7 +75,49 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                   ),
                   color: Colors.amber,
                   child: Text(
-                    questionBrain.getWordToJapanese(),
+                    questionBrain.getWordJapanese(list[1]),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 40
+                    ),
+                  ),
+                  onPressed: () {
+
+                  },
+                )
+            ),
+          ),
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))
+                  ),
+                  color: Colors.amber,
+                  child: Text(
+                    questionBrain.getWordJapanese(list[2]),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 40
+                    ),
+                  ),
+                  onPressed: () {
+
+                  },
+                )
+            ),
+          ),
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))
+                  ),
+                  color: Colors.amber,
+                  child: Text(
+                    questionBrain.getWordJapanese(list[3]),
                     style: TextStyle(
                         color: Colors.grey,
                         fontSize: 40

@@ -13,9 +13,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // get random list
-    // List<int> list = questionBrain.createRandomAnswer();
-    // print(list);
     return MaterialApp(
       title: 'Flutter',
       theme: ThemeData(
