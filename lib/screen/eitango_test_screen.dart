@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eitango_app/brain/question_brain.dart';
+import 'package:eitango_app/widget/answer_tile.dart';
 
 QuestionBrain questionBrain = QuestionBrain();
 
@@ -14,7 +15,6 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
   Widget build(BuildContext context) {
     // get random list
     List<int> list = questionBrain.createRandomAnswer(questionBrain.getWordIndex());
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
@@ -42,97 +42,49 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
               ),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: FlatButton(
-                minWidth: 300,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
-                color: Colors.amber,
-                child: Text(
-                  questionBrain.getWordJapanese(list[0]),
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 40
-                  ),
-                ),
-                onPressed: () {
-
-                },
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: FlatButton(
-                  minWidth: 300,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                  ),
-                  color: Colors.amber,
-                  child: Text(
-                    questionBrain.getWordJapanese(list[1]),
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 40
-                    ),
-                  ),
-                  onPressed: () {
-
-                  },
-                )
-            ),
-          ),
-          Expanded(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: FlatButton(
-                  minWidth: 300,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                  ),
-                  color: Colors.amber,
-                  child: Text(
-                    questionBrain.getWordJapanese(list[2]),
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 40
-                    ),
-                  ),
-                  onPressed: () {
-
-                  },
-                )
-            ),
-          ),
-          Expanded(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: FlatButton(
-                  minWidth: 300,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                  ),
-                  color: Colors.amber,
-                  child: Text(
-                    questionBrain.getWordJapanese(list[3]),
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 40
-                    ),
-                  ),
-                  onPressed: () {
-
-                  },
-                )
-            ),
-          ),
+          AnswerTile(listIndex: list[0], questionBrain: questionBrain),
+          AnswerTile(listIndex: list[1], questionBrain: questionBrain),
+          AnswerTile(listIndex: list[2], questionBrain: questionBrain),
+          AnswerTile(listIndex: list[3], questionBrain: questionBrain),
           SizedBox(height: 30.0),
         ],
       ),
     );
   }
 }
+
+// class AnswerTile extends StatelessWidget {
+//   @required int listIndex;
+//   @required QuestionBrain questionBrain;
+//
+//   AnswerTile({
+//     this.listIndex,
+//     this.questionBrain
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Expanded(
+//       child: Padding(
+//         padding: const EdgeInsets.all(10.0),
+//         child: FlatButton(
+//           minWidth: 300,
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.all(Radius.circular(10))
+//           ),
+//           color: Colors.amber,
+//           child: Text(
+//             questionBrain.getWordJapanese(listIndex),
+//             style: TextStyle(
+//               color: Colors.grey,
+//               fontSize: 40
+//             ),
+//           ),
+//           onPressed: () {
+//
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
