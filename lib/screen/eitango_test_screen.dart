@@ -30,17 +30,14 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Center(
-                child: Text(
-                  questionBrain.getWordToEnglish(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.grey
-                  ),
+            flex: 3,
+            child: Center(
+              child: Text(
+                questionBrain.getWordToEnglish(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.grey
                 ),
               ),
             ),
@@ -49,6 +46,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: FlatButton(
+                minWidth: 300,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))
                 ),
@@ -63,13 +61,14 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                 onPressed: () {
 
                 },
-              )
+              ),
             ),
           ),
           Expanded(
             child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: FlatButton(
+                  minWidth: 300,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
@@ -91,6 +90,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
             child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: FlatButton(
+                  minWidth: 300,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
@@ -112,6 +112,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
             child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: FlatButton(
+                  minWidth: 300,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
@@ -129,6 +130,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                 )
             ),
           ),
+          SizedBox(height: 30.0),
         ],
       ),
     );
