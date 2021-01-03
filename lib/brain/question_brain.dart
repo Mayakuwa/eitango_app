@@ -33,7 +33,7 @@ class QuestionBrain {
     return _questionStorage[_questionCount].japaneseWord;
   }
 
-  String getWordJapanese(int index) {
+  String getJapaneseWordByIndex(int index) {
     return _questionStorage[index].japaneseWord;
   }
 

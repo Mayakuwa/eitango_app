@@ -4,10 +4,12 @@ import 'package:eitango_app/brain/question_brain.dart';
 class AnswerTile extends StatelessWidget {
   @required int listIndex;
   @required QuestionBrain questionBrain;
+  @required Function onPress;
 
   AnswerTile({
     this.listIndex,
-    this.questionBrain
+    this.questionBrain,
+    this.onPress
   });
 
   @override
@@ -22,15 +24,13 @@ class AnswerTile extends StatelessWidget {
           ),
           color: Colors.amber,
           child: Text(
-            questionBrain.getWordJapanese(listIndex),
+            questionBrain.getJapaneseWordByIndex(listIndex),
             style: TextStyle(
                 color: Colors.grey,
                 fontSize: 40
             ),
           ),
-          onPressed: () {
-
-          },
+          onPressed: onPress,
         ),
       ),
     );

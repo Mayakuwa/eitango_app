@@ -11,6 +11,25 @@ class EitangoTestScreen extends StatefulWidget {
 }
 
 class _EitangoTestScreenState extends State<EitangoTestScreen> {
+  List<Icon> scoreKeeper = [];
+
+  void hello() {
+    print('hello');
+    scoreKeeper.add(Icon(Icons.check, color: Colors.red));
+  }
+
+  void checkedAnswer(String word) {
+    if(questionBrain.getWordToJapanese() == word) {
+      // show true Snackbar
+      print('true');
+      // add score kipper
+    } else {
+      // show false SnackBar
+      print('false');
+      // add score kipper
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // get random list
@@ -42,10 +61,11 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
               ),
             ),
           ),
-          AnswerTile(listIndex: list[0], questionBrain: questionBrain),
-          AnswerTile(listIndex: list[1], questionBrain: questionBrain),
-          AnswerTile(listIndex: list[2], questionBrain: questionBrain),
-          AnswerTile(listIndex: list[3], questionBrain: questionBrain),
+          AnswerTile(listIndex: list[0], questionBrain: questionBrain, onPress: () => checkedAnswer(questionBrain.getJapaneseWordByIndex(list[0]))),
+          AnswerTile(listIndex: list[1], questionBrain: questionBrain, onPress: () => checkedAnswer(questionBrain.getJapaneseWordByIndex(list[1]))),
+          AnswerTile(listIndex: list[2], questionBrain: questionBrain, onPress: () => checkedAnswer(questionBrain.getJapaneseWordByIndex(list[2]))),
+          AnswerTile(listIndex: list[3], questionBrain: questionBrain, onPress: () => checkedAnswer(questionBrain.getJapaneseWordByIndex(list[3]))),
+          Row(children: scoreKeeper),
           SizedBox(height: 30.0),
         ],
       ),
