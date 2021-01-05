@@ -4,6 +4,11 @@ import 'package:eitango_app/widget/answer_tile.dart';
 
 QuestionBrain questionBrain = QuestionBrain();
 
+enum Answers {
+  YES,
+  NO
+}
+
 class EitangoTestScreen extends StatefulWidget {
   static const routeName= './eitango_test_screen';
   @override
@@ -18,16 +23,51 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
     scoreKeeper.add(Icon(Icons.check, color: Colors.red));
   }
 
-  void checkedAnswer(String word) {
+  void checkedAnswer(String word) async {
+    createDialogOption(BuildContext context, Answers answer, String str) {
+      return new SimpleDialogOption(child: new Text(str),onPressed: (){Navigator.pop(context, answer);},);
+    }
+
     if(questionBrain.getWordToJapanese() == word) {
       // show true Snackbar
+      await showDialog<Answers>(
+          context: context,
+          builder: (BuildContext context) => new SimpleDialog(
+            title: new Text('SimpleDialog'),
+            children: <Widget>[
+              createDialogOption(context, Answers.YES, 'Yes'),
+              createDialogOption(context, Answers.NO, 'No')
+            ],
+          ),
+      ).then((value) {
+        switch(value) {
+          case Answers.YES:
+            break;
+          case Answers.NO:
+            Navigator.of(context).pop();
+            break;
+        }
+
+      });
+      questionBrain.nextQuestion();
       print('true');
       // add score kipper
+      setState(() {
+        scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+      });
     } else {
       // show false SnackBar
       print('false');
-      // add score kipper
+      setState(() {
+        scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+      });
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
