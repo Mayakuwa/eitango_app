@@ -1,3 +1,4 @@
+import 'package:eitango_app/screen/finish_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:eitango_app/brain/question_brain.dart';
 import 'package:eitango_app/widget/answer_tile.dart';
@@ -54,7 +55,12 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
           }
       );
       setState(() {
-        questionBrain.nextQuestion();
+        if (questionBrain.isfinishedQuestion()) {
+          print('finish');
+          Navigator.of(context).pushNamed(FinishScreen.routeName);
+        } {
+          questionBrain.nextQuestion();
+        }
         check ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
             : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
       });

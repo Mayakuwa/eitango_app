@@ -16,11 +16,13 @@ class QuestionBrain {
     Question('great','すごい'),
     Question('Fight','闘う'),
     Question('Drink','飲む'),
+    Question('Hat','帽子'),
   ];
 
   void nextQuestion() {
     if(_questionCount < _questionStorage.length - 1) {
       // increment count
+      print("$_questionCount回め");
       _questionCount++;
     }
   }
@@ -45,6 +47,7 @@ class QuestionBrain {
     if(_questionCount == 10) {
       //finish question
       print('Finish Question');
+      resetQuestion();
       return true;
     } else {
       return false;

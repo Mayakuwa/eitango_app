@@ -1,5 +1,6 @@
 import 'package:eitango_app/screen/choose_screen.dart';
 import 'package:eitango_app/screen/eitango_test_screen.dart';
+import 'package:eitango_app/screen/finish_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:eitango_app/brain/question_brain.dart';
 
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       home: ChooseScreen(),
       routes: {
         ChooseScreen.routeName: (ctx) => ChooseScreen(),
-        EitangoTestScreen.routeName: (ctx) => EitangoTestScreen()
+        EitangoTestScreen.routeName: (ctx) => EitangoTestScreen(),
+        FinishScreen.routeName: (ctx) => FinishScreen()
       },
     );
   }
