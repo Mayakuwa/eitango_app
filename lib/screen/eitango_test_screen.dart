@@ -15,14 +15,7 @@ class EitangoTestScreen extends StatefulWidget {
 class _EitangoTestScreenState extends State<EitangoTestScreen> {
   List<Icon> scoreKeeper = [];
 
-  void hello() {
-    print('hello');
-    scoreKeeper.add(Icon(Icons.check, color: Colors.red));
-  }
-
-  void checkedAnswer(String word) async {
-    if(questionBrain.getWordToJapanese() == word) {
-      // show true Snackbar
+  Future<void> showAnswerDialog (bool check) async {
       await showDialog(
           context: context,
           builder: (_) {
@@ -30,10 +23,10 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
               title: SizedBox(
                 height: 60,
                 child: FlareActor(
-                  'images/SuccessCheck.flr',
-                  alignment: Alignment.center,
-                  animation: 'Untitled',
-                  fit: BoxFit.contain
+                    check ? 'images/SuccessCheck.flr' : 'images/CloseIcon.flr',
+                    alignment: Alignment.center,
+                    animation: check ? 'Untitled' : 'Error',
+                    fit: BoxFit.contain
                 ),
               ),
               content: Column(
@@ -45,10 +38,10 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
               ),
               actions: <Widget>[
                 FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('ok'),
                 ),
                 FlatButton(
                   onPressed: () {
@@ -60,20 +53,22 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
             );
           }
       );
-      // go to next question
-      questionBrain.nextQuestion();
+      setState(() {
+        questionBrain.nextQuestion();
+        check ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
+            : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+      });
+  }
+
+  void checkedAnswer(String word) async {
+    if(questionBrain.getWordToJapanese() == word) {
+      // show true alert
+      showAnswerDialog(true);
       print('true');
-      // add score kipper
-      setState(() {
-        scoreKeeper.add(Icon(Icons.check, color: Colors.green));
-      });
     } else {
-      // show false SnackBar
-      questionBrain.nextQuestion();
+      // show false alert
+      showAnswerDialog(false);
       print('false');
-      setState(() {
-        scoreKeeper.add(Icon(Icons.close, color: Colors.red));
-      });
     }
   }
 
