@@ -15,9 +15,10 @@ class EitangoTestScreen extends StatefulWidget {
 
 class _EitangoTestScreenState extends State<EitangoTestScreen> {
   List<Icon> scoreKeeper = [];
+  int correctAnswerCounter = 0;
 
   Future<void> showAnswerDialog (bool check) async {
-      await showDialog(
+       await showDialog(
           context: context,
           builder: (_) {
             return AlertDialog(
@@ -55,18 +56,28 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
           }
       );
       setState(() {
+        if(check) {
+          scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+          correctAnswerCounter++;
+        } else {
+          scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+        }
+        // check ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
+        //     : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
         if (questionBrain.isfinishedQuestion()) {
           print('finish');
-          Navigator.of(context).pushNamed(FinishScreen.routeName);
+          Navigator.pushNamed(
+              context,
+              FinishScreen.routeName,
+              arguments: correctAnswerCounter
+          );
         } {
           questionBrain.nextQuestion();
         }
-        check ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
-            : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
       });
   }
 
-  void checkedAnswer(String word) async {
+  void checkedAnswer(String word) {
     if(questionBrain.getWordToJapanese() == word) {
       // show true alert
       showAnswerDialog(true);
