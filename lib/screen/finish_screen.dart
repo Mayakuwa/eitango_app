@@ -1,3 +1,4 @@
+import 'package:eitango_app/screen/choose_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
@@ -11,7 +12,9 @@ class FinishScreen extends StatelessWidget {
       appBar: AppBar(title: Text('result')),
       body: Column(
         children: <Widget>[
-          Expanded(
+          SizedBox(height: 40),
+          Container(
+            height: 200,
             child: FlareActor(
               'images/Trofeo.flr',
               alignment: Alignment.center,
@@ -20,7 +23,8 @@ class FinishScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 40),
-          Expanded(
+          Container(
+            height: 200,
             child: Text(
               '$correctAnswer個正解です！',
               style: TextStyle(
@@ -29,7 +33,26 @@ class FinishScreen extends StatelessWidget {
                   fontSize: 30
               ),
             ),
-          )
+          ),
+          Container(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(ChooseScreen.routeName);
+                  },
+                  color: Theme.of(context).accentColor,
+                  child: Text(
+                    'ホームに戻る',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+          ),
         ],
       )
     );
