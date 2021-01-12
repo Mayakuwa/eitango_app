@@ -12,6 +12,7 @@ class ChooseScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.settings, color: Colors.white),

@@ -128,7 +128,9 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                         ),
                         FlatButton(
                           child: Text("OK"),
-                          onPressed: () => Navigator.of(context).pushNamed(ChooseScreen.routeName),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(ChooseScreen.routeName);
+                          },
                         ),
                       ],
                     );
