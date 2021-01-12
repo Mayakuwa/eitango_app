@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:eitango_app/brain/question_brain.dart';
 import 'package:eitango_app/widget/answer_tile.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 QuestionBrain questionBrain = QuestionBrain();
 
@@ -17,7 +18,16 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
   List<Icon> scoreKeeper = [];
   int correctAnswerCounter = 0;
 
-  Future<void> showAnswerDialog (bool check) async {
+  void launchURL(String correctWord) async {
+    final url = 'https://ejje.weblio.jp/content/${correctWord}';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> showAnswerDialog (bool check, String correctWord) async {
        await showDialog(
           context: context,
           builder: (_) {
@@ -46,9 +56,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                   child: Text('ok'),
                 ),
                 FlatButton(
-                  onPressed: () {
-                    // go to dictionary
-                  },
+                  onPressed: () => launchURL(correctWord),
                   child: Text('go to dictionary'),
                 )
               ],
@@ -80,11 +88,11 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
   void checkedAnswer(String word) {
     if(questionBrain.getWordToJapanese() == word) {
       // show true alert
-      showAnswerDialog(true);
+      showAnswerDialog(true, questionBrain.getWordToEnglish());
       print('true');
     } else {
       // show false alert
-      showAnswerDialog(false);
+      showAnswerDialog(false, questionBrain.getWordToEnglish());
       print('false');
     }
   }
