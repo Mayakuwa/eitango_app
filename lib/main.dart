@@ -1,4 +1,5 @@
 import 'package:eitango_app/screen/choose_screen.dart';
+import 'package:eitango_app/screen/eitango_edit_screen.dart';
 import 'package:eitango_app/screen/eitango_test_screen.dart';
 import 'package:eitango_app/screen/finish_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,12 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.lightGreenAccent,
       ),
       home: ChooseScreen(),
+      initialRoute: ChooseScreen.routeName,
       routes: {
         ChooseScreen.routeName: (ctx) => ChooseScreen(),
         EitangoTestScreen.routeName: (ctx) => EitangoTestScreen(),
-        FinishScreen.routeName: (ctx) => FinishScreen()
+        FinishScreen.routeName: (ctx) => FinishScreen(),
+        EitangoEditScreen.routeName: (ctx) => EitangoEditScreen()
       },
     );
   }

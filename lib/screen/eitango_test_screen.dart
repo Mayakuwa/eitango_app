@@ -111,6 +111,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.cancel_outlined, color: Colors.white),
@@ -129,7 +130,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                         FlatButton(
                           child: Text("OK"),
                           onPressed: () {
-                            Navigator.of(context).pushNamed(ChooseScreen.routeName);
+                            Navigator.popUntil(context, ModalRoute.withName('./choose_screen'));
                           },
                         ),
                       ],

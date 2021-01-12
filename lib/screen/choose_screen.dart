@@ -1,5 +1,6 @@
 
 
+import 'package:eitango_app/screen/eitango_edit_screen.dart';
 import 'package:eitango_app/screen/eitango_test_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class ChooseScreen extends StatelessWidget {
                padding: EdgeInsets.all(20.0),
                child: FlatButton(
                  onPressed: () {
-                   Navigator.of(context).pushReplacementNamed(EitangoTestScreen.routeName);
+                   Navigator.of(context).pushNamed(EitangoTestScreen.routeName);
                  },
                  color: Theme.of(context).accentColor,
                  child: Text(
@@ -46,7 +47,9 @@ class ChooseScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(20.0),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(EitangoEditScreen.routeName);
+                  },
                   color: Theme.of(context).accentColor,
                   child: Text(
                     '英単語追加',

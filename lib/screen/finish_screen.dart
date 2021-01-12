@@ -9,7 +9,10 @@ class FinishScreen extends StatelessWidget {
     final correctAnswer = ModalRoute.of(context).settings.arguments;
     print('$correctAnswer個正解');
     return Scaffold(
-      appBar: AppBar(title: Text('result')),
+      appBar: AppBar(
+          title: Text('result'),
+          automaticallyImplyLeading: false,
+      ),
       body: Column(
         children: <Widget>[
           SizedBox(height: 40),
@@ -39,7 +42,7 @@ class FinishScreen extends StatelessWidget {
                 padding: EdgeInsets.all(20.0),
                 child: FlatButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(ChooseScreen.routeName);
+                    Navigator.popUntil(context, ModalRoute.withName(ChooseScreen.routeName));
                   },
                   color: Theme.of(context).accentColor,
                   child: Text(

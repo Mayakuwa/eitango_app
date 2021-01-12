@@ -19,6 +19,10 @@ class QuestionBrain {
     Question('Hat','帽子'),
   ];
 
+  List<Question> getQuestionList() {
+    return _questionStorage;
+  }
+
   void nextQuestion() {
     if(_questionCount < _questionStorage.length - 1) {
       // increment count
