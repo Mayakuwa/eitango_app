@@ -45,7 +45,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text('テストメッセージ')
+                  check ? Text('正解！！') : Text('不正解！！')
                 ],
               ),
               actions: <Widget>[
@@ -145,39 +145,3 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
     );
   }
 }
-
-// class AnswerTile extends StatelessWidget {
-//   @required int listIndex;
-//   @required QuestionBrain questionBrain;
-//
-//   AnswerTile({
-//     this.listIndex,
-//     this.questionBrain
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Expanded(
-//       child: Padding(
-//         padding: const EdgeInsets.all(10.0),
-//         child: FlatButton(
-//           minWidth: 300,
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.all(Radius.circular(10))
-//           ),
-//           color: Colors.amber,
-//           child: Text(
-//             questionBrain.getWordJapanese(listIndex),
-//             style: TextStyle(
-//               color: Colors.grey,
-//               fontSize: 40
-//             ),
-//           ),
-//           onPressed: () {
-//
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
