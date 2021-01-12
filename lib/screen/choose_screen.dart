@@ -27,7 +27,7 @@ class ChooseScreen extends StatelessWidget {
                padding: EdgeInsets.all(20.0),
                child: FlatButton(
                  onPressed: () {
-                   Navigator.of(context).pushNamed(EitangoTestScreen.routeName);
+                   Navigator.of(context).pushReplacementNamed(EitangoTestScreen.routeName);
                  },
                  color: Theme.of(context).accentColor,
                  child: Text(

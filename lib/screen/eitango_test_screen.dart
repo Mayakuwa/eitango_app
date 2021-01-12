@@ -1,3 +1,4 @@
+import 'package:eitango_app/screen/choose_screen.dart';
 import 'package:eitango_app/screen/finish_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:eitango_app/brain/question_brain.dart';
@@ -113,7 +114,27 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.cancel_outlined, color: Colors.white),
-              onPressed: null
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return AlertDialog(
+                      content: Text("テストを終了しますか？"),
+                      actions: <Widget>[
+                        // ボタン領域
+                        FlatButton(
+                          child: Text("Cancel"),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                        FlatButton(
+                          child: Text("OK"),
+                          onPressed: () => Navigator.of(context).pushNamed(ChooseScreen.routeName),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
           )
         ],
       ),
