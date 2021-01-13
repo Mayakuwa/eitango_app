@@ -15,6 +15,12 @@ class _EitangoEditScreenState extends State<EitangoEditScreen> {
     print(questionBrain.getQuestionList());
     return Scaffold(
       appBar: AppBar(title: Text('Edit')),
+      body: ListView.builder(
+          itemCount: questionBrain.getQuestionList().length,
+          itemBuilder: (BuildContext context, int index) {
+            return Text(questionBrain.getEnglishWordByIndex(index));
+          }
+      )
     );
   }
 }

@@ -43,6 +43,10 @@ class QuestionBrain {
     return _questionStorage[index].japaneseWord;
   }
 
+  String getEnglishWordByIndex(int index) {
+    return _questionStorage[index].englishWord;
+  }
+
   int getWordIndex() {
     return _questionCount;
   }
