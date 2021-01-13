@@ -18,7 +18,27 @@ class _EitangoEditScreenState extends State<EitangoEditScreen> {
       body: ListView.builder(
           itemCount: questionBrain.getQuestionList().length,
           itemBuilder: (BuildContext context, int index) {
-            return Text(questionBrain.getEnglishWordByIndex(index));
+            return Container(
+              decoration: new BoxDecoration(
+                  border: new Border(bottom: BorderSide(width: 1.0, color: Colors.grey))
+              ),
+              child:ListTile(
+                title: Text(
+                  questionBrain.getEnglishWordByIndex(index),
+                  style: TextStyle(
+                      color:Colors.black,
+                      fontSize: 18.0
+                  ),
+                ),
+                onTap: () {
+                  print("onTap called.");
+                }, // タップ
+                onLongPress: () {
+                  print("onLongTap called.");
+                }, // 長押し
+              ),
+            );
+            // return Text(questionBrain.getEnglishWordByIndex(index));
           }
       )
     );
