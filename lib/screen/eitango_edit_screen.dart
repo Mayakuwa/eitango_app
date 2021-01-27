@@ -1,4 +1,5 @@
 import 'package:eitango_app/brain/question_brain.dart';
+import 'package:eitango_app/screen/eitango_edit_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:eitango_app/widget/simple_tile.dart';
 
@@ -20,7 +21,13 @@ class _EitangoEditScreenState extends State<EitangoEditScreen> {
           itemCount: questionBrain.getQuestionList().length,
           itemBuilder: (BuildContext context, int index) {
             final item = questionBrain.getQuestionList()[index].englishWord;
-            return SimpleTile(item: item, onPress:() => print(item));
+            return SimpleTile(
+                item: item,
+                onPress:() => Navigator.of(context).pushNamed(
+                    EitangoEditDetailScreen.routeName,
+                    arguments: item
+                )
+            );
           }
       )
     );

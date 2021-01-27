@@ -19,6 +19,7 @@ class _EitangoTestScreenState extends State<EitangoTestScreen> {
   List<Icon> scoreKeeper = [];
   int correctAnswerCounter = 0;
 
+  // fetch dictionary URL from web
   void launchURL(String correctWord) async {
     final url = 'https://ejje.weblio.jp/content/${correctWord}';
     if (await canLaunch(url)) {
