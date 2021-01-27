@@ -53,6 +53,7 @@ class QuestionBrain {
 
   // add delete function
 
+
   bool isfinishedQuestion() {
     if(_questionCount == 10) {
       //finish question
